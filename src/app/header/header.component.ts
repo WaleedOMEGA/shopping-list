@@ -7,19 +7,25 @@ import { DataStorageService } from '../shared/data-storage.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  {
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+    private authService: AuthService) {
+}
 
-  onSaveData() {
-    this.dataStorageService.storeRecipes()
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
-  }
+onSaveData() {
+this.dataStorageService.storeRecipes()
+.subscribe(
+(response: Response) => {
+console.log(response);
+}
+);
+}
 
-  onFetchData() {
-    this.dataStorageService.getRecipes();
-  }
+onFetchData() {
+this.dataStorageService.getRecipes();
+}
+
+onLogout() {
+this.authService.logout();
+}
   }
 
